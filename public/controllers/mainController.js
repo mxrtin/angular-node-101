@@ -2,6 +2,14 @@
 
 controllers.controller('mainController', function($scope, customerService) {
 
+    $scope.data = {};
+    $scope.payBill = [
+        { bill: "Tution", paid:true },
+        { bill: "Electricity", paid: false },
+        { bill: "Internet", paid: false},
+        { bill: "Income Tax", paid: false },
+        { bill: "Subway Pass", paid: true },
+        { bill: "Library", paid: false }];
 
 
 

@@ -10,8 +10,26 @@
 </head>
 <body>
 
-<header>
     <div ng-controller="mainController">
+
+        <header>
+            <nav>
+                <a href="/html/">Link1</a> | <a href="/css/">Link2</a>
+            </nav>
+        </header>
+
+        <aside>
+            <article>
+                <header>
+                    <div>
+                        <div>
+                            <h1>This is aside</h1>
+                        </div>
+                    </div>
+                </header>
+            </article>
+        </aside>
+
         <button ng-click = "getCustomers()">Fill Customers List</button> <br />
         <div style="background-color: #00B7FF">
             <p>Directive Customer[0]</p>
@@ -21,20 +39,52 @@
         <ul ng-repeat="item in customers">
             <li>Name: {{item.name}}, Location: {{item.city}}</li>
         </ul>
-    </div>
-</header>
 
-<aside>
-    <article>
-        <header>
-            <div>
-                <div>
-                    <h1>This is aside</h1>
+
+        <div id="partialView">
+            <h3 class="panel-header">Partial View</h3>
+            <div class="well">
+                <div class="radio" ng-repeat="button in ['Default', 'List', 'Table']">
+                    <label>
+                        <input type="radio" ng-model="data.mode"
+                               value="{{button}}" ng-checked="$first"/>
+                        {{button}}
+                    </label>
                 </div>
             </div>
-        </header>
-    </article>
-</aside>
+
+            <div ng-switch on="data.mode">
+                <div ng-switch-when="Table">
+
+                    <table class="table">
+                        <thead>
+                        <tr><th>Sr No</th> <th>Bill</th> <th>Paid</th>
+                        </thead>
+
+                        <tr ng-repeat="billNames in payBill" ng-class="$odd ? 'odd' : 'even'">
+                            <td>{{$index + 1}}</td>
+                            <td ng-repeat="properties in billNames">{{properties}}</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div ng-switch-when="List">
+                    <ul>
+                        <li ng-repeat="billNames in payBill">
+                            {{billNames.bill}}<span ng-if="billNames.paid">Paid</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div ng-switch-default>
+                    Please select a  the Layout from the Options
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
