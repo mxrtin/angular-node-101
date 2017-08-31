@@ -39,7 +39,7 @@ controllers.controller('mainController', function($scope, customerService) {
 }).directive('myCustomer', function() {
     return {
         restrict: 'E',
-        templateUrl: 'routes/my-customer.html'
+        templateUrl: 'routes/customer.html'
     };
 });
 
