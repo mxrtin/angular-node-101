@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scotches page</title>
+</head>
+<body>
+<div class="form-group">
+    <input type="text" class="form-control input-lg text-center" placeholder="Add scotch" ng-model="scotches.name">
+    <input type="text" class="form-control input-lg text-center" placeholder="Add price" ng-model="scotches.price">
+    <button type="submit" class="btn btn-primary btn-lg" ng-click="createScotch()">Add</button>
+</div>
+
+<ul ng-repeat="item in scotches">
+    <scotch model="item"></scotch>
+</ul>
+</body>
+</html>
